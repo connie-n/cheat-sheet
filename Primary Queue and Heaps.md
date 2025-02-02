@@ -1,11 +1,5 @@
----
-layout: post
-title: "Primary Queue and Heaps"
----
-
-
-
 ## HEAPS AND PRIMARY QUEUE
+
 
 
 
@@ -37,45 +31,39 @@ title: "Primary Queue and Heaps"
 
 
 - In the array-based implementiation, child node indexes are defined relative to the indexs of their parents, so a node at index _i_ has children at indexes _2i_ and _2i+1_. 
+- Adding elements, removing the highest-priority elements from heaps, sorting auxiliary information, updating priorities
+
 
 
 **Min heaps**
+>- (_Reference: Data Structures The Fun Way_)
+>- the min heap is a version of the heap that facilitates finding the item with the lowest value. 
+>- the min heap property is that the value at any node in the tree is smaller than (or equal to) the values of its children. 
+
+- Adding and removing elements
+
+
+**Heapsort**
+>- (_Reference: Data Structures The Fun Way_)
+>- heapsort is an algorithm for sorting a list of item using the heap data structure. 
+>- the input is an unsorted array. the output is an array containing those same elements, but in decreasing sorted order(for a max heap)
+
+
 
 
 
 ## 🃏 Leetcode
 
+### 
+
+- [Merge K Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/)
+- [Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/)
+- [Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/)
+
+
    
 <br>   
 
 
-   
-## Link   
-### General link
-- [🚗 Visit EASYME.md's Repo](https://github.com/EASYME-md/client)   
-- [🙋‍♂️ Visit ONE:A's Github](https://github.com/onealog)
-
-
-<br>   
-   
-## Code Block   
-### Code inline
-- `console.log('Hello EASYME.md!');`   
-   
-### Code block
-```js
-function makeDeveloper(name, language) {
-  if (name === 'ONE:A' && language === 'JavaScript') {
-    return 'perfect!';
-  }
-
-  return false;
-}
-
-makeDeveloper('ONE:A', 'JavaScript');
-```
-
-<br>   
-   
 
 
