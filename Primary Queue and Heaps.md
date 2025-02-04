@@ -61,7 +61,45 @@
 - [Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/)
 
 
-   
+- [Total Cost to Hire K Workers](https://leetcode.com/problems/total-cost-to-hire-k-workers/)
+
+```python
+class Solution:
+    def totalCost(self, costs: List[int], k: int, candidates: int) -> int:
+        n = len(costs)
+        left_heap = []
+        right_heap = []
+        left = 0
+        right = n - 1
+        sumcosts = 0
+
+        for _ in range(min(candidates, n)):
+            heapq.heappush(left_heap, (costs[left], left))
+            left += 1
+
+        for _ in range(min(candidates, n - left)):
+            heapq.heappush(right_heap, (costs[right], right))
+            right -= 1
+
+        for _ in range(k):
+            # select smaller value in the right and left heaps 
+            if right_heap and (not left_heap or left_heap[0] > right_heap[0]):
+                cost, idx = heapq.heappop(right_heap)
+                if right >= left: # add new worker
+                    heapq.heappush(right_heap, (costs[right], right))
+                    right -= 1     
+            else:
+                cost, idx = heapq.heappop(left_heap)
+                if left <= right:
+                    heapq.heappush(left_heap, (costs[left], left))
+                    left += 1 
+                    
+            sumcosts += cost
+
+        return sumcosts 
+```
+
+
 <br>   
 
 
