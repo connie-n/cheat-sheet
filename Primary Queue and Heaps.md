@@ -54,7 +54,6 @@
 
 ## 🃏 Leetcode
 
-### 
 
 - [Merge K Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/)
 ```python
@@ -96,8 +95,27 @@ class Solution:
         #return [num for num, freq in cnt.most_common(k)]
         return heapq.nlargest(k, cnt.keys(), key=cnt.get)
 ```
-- [Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/)
 
+
+- [Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/)
+```python
+class MedianFinder:
+    def __init__(self):
+        self.low = [] #maxheap
+        self.high = [] #minheap
+        
+    def addNum(self, num: int) -> None:
+        heapq.heappush(self.low, -num)
+        heapq.heappush(self.high, -heapq.heappop(self.low)) #max value of maxheap to minheap
+        
+        if len(self.low) < len(self.high):
+            heapq.heappush(self.low, -heapq.heappop(self.high))
+
+    def findMedian(self) -> float:
+        if len(self.low) > len(self.high):
+            return -self.low[0] #return max value of maxheap when len is odd
+        return (-self.low[0] + self.high[0]) / 2.0
+```
 
 - [Total Cost to Hire K Workers](https://leetcode.com/problems/total-cost-to-hire-k-workers/)
 
@@ -137,6 +155,24 @@ class Solution:
         return sumcosts 
 ```
 
+- [Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/)
+
+Use heapify
+```python
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        heapq.heapify(nums)
+       
+        kth_largest = (heapq.nlargest(k, nums))
+        return kth_largest[k-1] #heapq.nlargest(k, nums)[-1]
+```
+
+Use sort 
+```python
+class Solution:
+    def findKthLargest(self, nums: List[int], k: int) -> int:
+        return sorted(nums, reverse=True)[k-1]
+```
 
 <br>   
 
