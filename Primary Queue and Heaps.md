@@ -57,7 +57,45 @@
 ### 
 
 - [Merge K Sorted Lists](https://leetcode.com/problems/merge-k-sorted-lists/)
+```python
+class Solution:
+    def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
+        root = result = ListNode(None)
+        heap = []
+
+        for i in range(len(lists)):
+            #add the first value of node(lists[i].val), index(i), node(lists[i])
+            if lists[i]:
+                heapq.heappush(heap, (lists[i].val, i, lists[i]))
+            
+        while heap:
+            node = heapq.heappop(heap) #extract minimum node
+            idx = node[1] #original index of list
+            result.next = node[2] #set result.next as current node
+
+            result = result.next #move result pointer to next
+            if result.next: #if there is next node, add to heap
+                heapq.heappush(heap, (result.next.val, idx, result.next))
+
+        return root.next 
+```
+
 - [Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/)
+
+**heapq.nlargest(n, iterable, key=None)**
+Return a list with the n largest elements from the dataset defined by iterable. key, if provided, specifies a function of one argument that is used to extract a comparison key from each element in iterable (for example, key=str.lower). Equivalent to: sorted(iterable, key=key, reverse=True)[:n].
+
+**heapq.nsmallest(n, iterable, key=None)**
+Return a list with the n smallest elements from the dataset defined by iterable. key, if provided, specifies a function of one argument that is used to extract a comparison key from each element in iterable (for example, key=str.lower). Equivalent to: sorted(iterable, key=key)[:n].
+
+
+```python
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        cnt = collections.Counter(nums)
+        #return [num for num, freq in cnt.most_common(k)]
+        return heapq.nlargest(k, cnt.keys(), key=cnt.get)
+```
 - [Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/)
 
 
