@@ -9,11 +9,11 @@ Record solutions to must-solve LeetCode problems, focusing on frequently asked q
 
 
 ## Data structures and algorithms
-- Primary queue and heaps
+- [Primary queue and heaps](data-structures-and-algorithms/Primary-queue-and-heaps.md)
 
 
 ## Fundamental patterns
-- Intervals
-- String Manipulation
+- [Intervals](fundamental-patterns/Intervals.md)
+- [String Manipulation](fundamental-patterns/String-manipulation.md)
 
 
